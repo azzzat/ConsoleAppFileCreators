@@ -11,12 +11,19 @@ namespace ConsoleAppFileCreator
     {
         static void Main(string[] args)
         {
+            //указываю расположение папки и файла в котором будут 1000 строк товаров
             String path = @"..\..\..\..\Files\1000items.txt";
+
+            //весь сгенерированный список будет хранится в одной строке
             StringBuilder finalStringBuilder = new StringBuilder();
+
+            //генератор случайных чисел для указания стоимости продукта
             Random rnd = new Random();
 
             for (int i = 1; i <= 1000; i++)
             {
+
+                //Название продукта будет генерироваться в зависимости от позиции в списке
                 String article;
                 if (i < 100)
                 {
@@ -35,8 +42,10 @@ namespace ConsoleAppFileCreator
                     article = "Шапка";
                 }
 
+                //генерирование стоимости продукта - от 1 до 1000
                 int price = rnd.Next(1, 1000);
 
+                //запись сгенерированной строки в финальную строку с табуляцией между столбцами
                 finalStringBuilder.Append(i);
                 finalStringBuilder.Append("\t");
                 finalStringBuilder.Append(article);
@@ -48,16 +57,15 @@ namespace ConsoleAppFileCreator
             
             try 
             {
+                //финальная строка которая уже имеет большой размер и содержит все строки
+                //единожды отправляется в указаный изначально путь
+                //если запустить повторно то файл перезапишется с другими величинами стоимости продуктов
                 File.WriteAllText(path, finalStringBuilder.ToString());
             } 
             catch
             {
                 Console.WriteLine("Возникло исключение при записи файла");
             }
-
-            Console.WriteLine(Directory.GetCurrentDirectory());
-
-            Console.ReadLine();
         }
     }
 }
