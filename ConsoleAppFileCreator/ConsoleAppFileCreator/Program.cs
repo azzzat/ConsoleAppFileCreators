@@ -20,6 +20,7 @@ namespace ConsoleAppFileCreator
             //генератор случайных чисел для указания стоимости продукта
             Random rnd = new Random();
 
+            
             for (int i = 1; i <= 1000; i++)
             {
 
@@ -39,7 +40,7 @@ namespace ConsoleAppFileCreator
                 }
                 else
                 {
-                    article = "Шапка";
+                    article = "Шапка-ушанка";
                 }
 
                 //генерирование стоимости продукта - от 1 до 1000
