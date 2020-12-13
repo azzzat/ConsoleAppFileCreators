@@ -51,20 +51,20 @@ namespace ConsoleAppFileReader
             sr.Close();
 
             //значение j - это стоимость продукции, 100 - диапазон цен в каждом создаваемом файле 
-            for (int j = 0; j < 1000; j = j + 100)
+            for (int j = 1; j <= 1000; j = j + 100)
             {
                 //данные для записи в новый файл собираются в StringBuilder
                 StringBuilder finalStringBuilder = new StringBuilder();
 
                 //расположение нового файла и генерация названия в зависимости от ценового диапозона
-                path = @"..\..\..\..\Files\items_from_" + (j +1) 
-                    + "_to_" + (j+100) + ".txt";
+                path = @"..\..\..\..\Files\items[" + (j) 
+                    + ";" + (j + 99) + "]rub.txt";
 
                 //проверка значения цены в сортированом списке на соответствие ценовому диапозону
                 for (int i = 1; i <= 1000; i++)
                 {
                     int price = rowPriceList[i];
-                    if (price > j && price < j + 100)
+                    if (price >= j && price < j + 100)
                     {
                         finalStringBuilder.Append(i);
                         finalStringBuilder.Append("\t");
